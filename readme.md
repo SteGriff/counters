@@ -10,7 +10,8 @@ Created around April 2013.
 	values
 	('Wedding','Ste and Helen wedding counter', 1, "KGTwoisBetterThanOne.ttf", 85, 119, 119)
 
-Don't initailise them with a Counter of 0 for some reason.
+ * Don't initailise them with a Counter of 0 for some reason.
+ * Font must be found in `/fonts` directory
 
 ## Usage
 
