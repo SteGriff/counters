@@ -1,5 +1,7 @@
 # Page Counters
 
+**This is a lower quality project**
+
 Page counters with customisable font and colour, rendered as images. When the image is loaded, the page count increases. There is no IP or fraud detection :)
 
 Created around April 2013.
@@ -12,9 +14,14 @@ Created around April 2013.
 
  * Don't initailise them with a Counter of 0 for some reason.
  * Font must be found in `/fonts` directory
+ * Configure `db.php` with connection details
 
 ## Usage
 
-/host/counters?n=counter_name
-  
-/host/counters?n=Wedding
+(From the hosted directory)
+
+ *	Load a counter in page: (img src) `/?n=counter_name`
+	E.g. for `/host/counters`: `/host/counters?n=Wedding`
+
+ *	Create a counter: `/new.htm`
+	Or use API: POST Name, Description, Font, R, G, and B to `/create.php`
