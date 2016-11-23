@@ -20,11 +20,12 @@ Created around April 2013.
 
 (From the hosted directory)
 
- *	Load a counter in page: (img src) `/?n=counter_name`
-	E.g. for `/host/counters`: `/host/counters?n=Wedding`
+ * Load a counter in page: (img src) `/?n=counter_name`
+     - E.g. for `/host/counters`: `/host/counters?n=Wedding`
 
  *	Create a counter: `/new.htm`
-	Or use API: POST Name, Description, Font, R, G, and B to `/create.php`
+     - Or use API: `POST` Key, Name, Description, Font, R, G, and B to `/create.php`
+	 - The Key is the `$secret` defined in `db.php`
 
 ## Troubleshooting
 
