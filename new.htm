@@ -1,0 +1,132 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title></title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+body{
+	font-family: sans-serif;
+}
+div.box
+{
+	background: #eee;
+	padding: 10px;
+	margin: 20px;
+}
+#colourSample
+{
+	background: #fff;
+	margin: 20px;
+	width: 100px;
+	height: 30px;
+	border: 1px solid black;
+}
+</style>
+
+</head>
+<body>
+	<h1>Create Counter</h1>
+
+	<img id="imageSample" src="index.php" alt="Preview image">
+	
+	<form action="create.php" method="GET">
+		<div class="box">
+			<label>
+				Name: <input id="Name" name="Name" onchange="renderPreview()">
+			</label>
+			<label>
+				Description: <input id="Description" name="Description" onchange="renderPreview()">
+			</label>
+		</div>
+		<div class="box">
+			<label>
+				Font: <select id="Font" name="Font" onchange="renderPreview()"></select>
+			</label>
+			<label>
+				Font size: <input id="FontSize" name="FontSize" type="number" onchange="renderPreview()">
+			</label>
+		</div>
+		<div class="box">
+			<input id="R" name="R" placeholder="R" onchange="colourPreview()">
+			<input id="G" name="G" placeholder="G" onchange="colourPreview()">
+			<input id="B" name="B" placeholder="B" onchange="colourPreview()">
+			<div id="colourSample"></div>
+		</div>
+		<div class="box">
+			<input type="submit" value="Create">
+		</div>
+	</form>
+
+	<script type="text/javascript">
+		var $r;
+		var $g;
+		var $b;
+		var $font;
+		var $fontSize;
+		
+		function $(x){
+			return ((x[0]=="#") ? document.getElementById(x.substr(1)) : document.getElementsByTagName(x)[0]);
+		}
+		
+		function colourPreview()
+		{
+			rgbaString = "rgba(" + $r.value + ", " + $g.value + ", " + $b.value + ", 1.0)";
+			console.log(rgbaString);
+			sample = $("#colourSample");
+			sample.style.backgroundColor = rgbaString;
+			
+			renderPreview();
+		}
+		
+		function renderPreview()
+		{
+			var req = 'index.php?'
+			+ 'Font=' + $font.value
+			+ '&FontSize=' + $fontSize.value
+			+ '&R=' + $r.value
+			+ '&G=' + $g.value
+			+ '&B=' + $b.value;
+			
+			console.log($r);
+			console.log($r.value);
+			
+			imageSample = $("#imageSample");
+			imageSample.src = req;
+		}
+		
+		function getFontList()
+		{
+			var req = 'fontOptions.php';
+			
+			//Set up GET request
+			var xhr = new XMLHttpRequest();
+			xhr.open("GET", req, true);
+			
+			//Success callback
+			xhr.onload = function(e){
+				if (xhr.readyState === 4) {
+					$font.innerHTML = xhr.responseText;
+				}
+			};
+			
+			//Send the GET request
+			xhr.send(null);
+		}
+		
+		
+		function setup()
+		{
+			$r = $("#R");
+			$g = $("#G");
+			$b = $("#B");
+			$font = $("#Font");
+			$fontSize = $("#FontSize");
+			getFontList();
+			colourPreview();
+		}
+		
+		setup();
+	</script>
+	
+</body>
+</html>
