@@ -18,13 +18,13 @@ function sqlInt($i){
 	return $db->real_escape_string((int)$i);
 }
 
-function getNamedCounter($name, $db){
+function getNamedCounter($name){
 	global $db;
 	$result = $db->query("select * from page_counters where Name = '$name'");
 	return $result->fetch_object();
 }
 
-function trackVisit($id, $db){
+function trackVisit($id){
 	global $db, $db_now;
 	
 	//Increment counter (page_counters)

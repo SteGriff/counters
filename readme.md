@@ -25,3 +25,7 @@ Created around April 2013.
 
  *	Create a counter: `/new.htm`
 	Or use API: POST Name, Description, Font, R, G, and B to `/create.php`
+
+## Troubleshooting
+
+If the images fail or contain errors, try `/?n=counter_name&debug=true` to see the raw data. You must fix any PHP error messages which appear in or before the PNG data.
