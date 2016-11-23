@@ -1,5 +1,7 @@
 <?php
 
+$secret = "PleaseMakeMeAPageCounter";
+
 function db(){
 	//Connect to db using MySQLi
 	$sv = "server.host.name.com";

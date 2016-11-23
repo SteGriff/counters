@@ -3,6 +3,14 @@
 
 require 'DAL.php';
 
+//Get key (required)
+$key = $_GET['Key'];
+if ($key == null || $key !== $secret)
+{
+	echo "Incorrect access key!";
+	die();
+}
+
 //Get name (required)
 $name = $_GET['Name'];
 if ($name == null)
